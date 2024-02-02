@@ -1,0 +1,45 @@
+.header{
+  margin: 20px 0;
+  z-index: 0;
+  position: relative;
+  padding: 30px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid white;
+
+  .btnSort {
+    margin: 0 0 0 20px;
+    background-color: saddlebrown;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: 0.4s;
+    cursor: pointer;
+
+    &:hover {
+      scale: 105%;
+    }
+    }
+  .inputSearch{
+    margin: 0 20px 0 0;
+    padding: 5px 10px;
+    min-width: 160px;
+    width: 25%;
+    border-radius: 10px;
+    border: 3px solid black;
+    font-size: 16px;
+    &::placeholder{
+      color: crimson;
+    }
+  }
+  &:before{
+    z-index: -1;
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.5;
+  }
+}

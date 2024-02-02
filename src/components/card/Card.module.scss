@@ -1,0 +1,45 @@
+.newsCard{
+  color: white;
+  z-index: 0;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  text-align: center;
+  border: 3px solid white;
+  border-radius: 10px;
+  padding: 30px 10px;
+  overflow: hidden;
+  &:before{
+    z-index: -1;
+    position: absolute;
+    content: "";
+    inset: 0;
+    background-color: black;
+    opacity: 0.5;
+  }
+  .newsTitle{
+    font-size: 10px;
+    width: 20%;
+    padding-left: 20px;
+  }
+  .newsDate{
+    width: 15%;
+  }
+  .newsTxt{
+    width: 50%;
+  }
+  a .btnMore{
+    cursor: pointer;
+    font-size: 12px;
+    background-color: orange;
+    padding: 10px;
+    border-radius: 10px;
+    transition: 0.4s;
+    margin-right: 20px;
+    &:hover{
+      scale: 105%;
+    }
+  }
+}
