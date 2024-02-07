@@ -4,7 +4,7 @@ import {useContext} from "react";
 import style from "./Article.module.scss";
 
 
-export const Article = (item) => {
+export const Article = () => {
 
     const {
         fullArticle,
@@ -18,6 +18,8 @@ export const Article = (item) => {
         content,
         url
     } = fullArticle;
+
+    const timeOfPublished = new Date(publishedAt).toLocaleString('ru-RU', options)
 
 
     return (
@@ -38,7 +40,7 @@ export const Article = (item) => {
                     rel="noopener noreferrer">
                     Читать в источнике
                 </a>
-                <p>{new Date(publishedAt).toLocaleString('ru-RU', options)}</p>
+                <p>{timeOfPublished}</p>
             </div>
             <div className={style.content}>
                 {content !== null ? content : <h2>Статья отсутствует</h2>}

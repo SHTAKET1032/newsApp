@@ -1,38 +1,43 @@
-.top{
+.top {
   text-align: center;
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 30px 0;
-  h3{
+
+  h3 {
     width: 50%;
   }
-  .link{
+
+  .link {
     background-color: crimson;
     color: white;
     padding: 10px;
     border-radius: 10px;
     transition: 0.4s;
     margin-right: 20px;
-    &:hover{
+
+    &:hover {
       scale: 105%;
     }
   }
-  a .btnBack{
+
+  a .btnBack {
     background-color: orange;
     font-size: 12px;
     padding: 10px;
     border-radius: 10px;
     transition: 0.4s;
     margin-right: 20px;
-    &:hover{
+
+    &:hover {
       scale: 105%;
     }
   }
 }
 
 
-.content{
+.content {
   color: white;
   z-index: 0;
   position: relative;
@@ -43,7 +48,8 @@
   border-radius: 10px;
   padding: 30px 10px;
   overflow: hidden;
-  &:before{
+
+  &:before {
     z-index: -1;
     position: absolute;
     content: "";

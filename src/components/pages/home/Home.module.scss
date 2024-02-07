@@ -1,4 +1,4 @@
-.btnMore{
+.btnMore {
   display: block;
   margin: 20px auto;
   background-color: orange;
@@ -6,7 +6,8 @@
   border-radius: 10px;
   transition: 0.4s;
   font-size: 12px;
-  &:hover{
+
+  &:hover {
     scale: 105%;
   }
 }

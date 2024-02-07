@@ -1,4 +1,4 @@
-.newsCard{
+.newsCard {
   color: white;
   z-index: 0;
   position: relative;
@@ -11,7 +11,8 @@
   border-radius: 10px;
   padding: 30px 10px;
   overflow: hidden;
-  &:before{
+
+  &:before {
     z-index: -1;
     position: absolute;
     content: "";
@@ -19,18 +20,22 @@
     background-color: black;
     opacity: 0.5;
   }
-  .newsTitle{
+
+  .newsTitle {
     font-size: 10px;
     width: 20%;
     padding-left: 20px;
   }
-  .newsDate{
+
+  .newsDate {
     width: 15%;
   }
-  .newsTxt{
+
+  .newsTxt {
     width: 50%;
   }
-  a .btnMore{
+
+  a .btnMore {
     cursor: pointer;
     font-size: 12px;
     background-color: orange;
@@ -38,7 +43,8 @@
     border-radius: 10px;
     transition: 0.4s;
     margin-right: 20px;
-    &:hover{
+
+    &:hover {
       scale: 105%;
     }
   }

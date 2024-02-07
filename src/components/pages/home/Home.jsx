@@ -1,32 +1,86 @@
-import React, {useContext} from "react";
-import {AppContext} from "../../app/App";
-import {Header} from "../../header/Header";
-import {Loader} from "../../loader/Loader";
+import React, {useEffect, useState} from "react";
+import {HomeHeader} from "../../homeHeader/HomeHeader";
 import style from "./Home.module.scss"
+import axios from "axios";
+import {Card} from "../../card/Card";
 
 
 export const Home = () => {
 
-    const {
-        filtredNews,
-        renderNews,
-        loading,
-        onAddNews
-    } = useContext(AppContext)
+    const [data, setData] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [pages, setPages] = useState(3)
+    const [sort, setSort] = useState(true)
+    const [searchValue, setSearchValue] = useState('')
+    const [displayOptions, setDisplayOptions] = useState({
+        showTitle: true,
+        showDate: true,
+        showText: true
+    })
+
+    useEffect(() => {
+        async function getData() {
+            try {
+                setLoading(true)
+
+                const dataResponse = await axios.get(`https://newsapi.org/v2/top-headlines?pageSize=${pages}&country=ru&apiKey=db28ec789a3945f281d87070a1d28362`)
+                setData(dataResponse.data.articles)
+
+                setLoading(false)
+
+            } catch (error) {
+                alert('Ошибка при запросе данных ;(');
+                console.error(error);
+            }
+        }
+
+        getData()
+    }, [pages])
+
+
+
+    const renderNews = () => {
+        return (
+            (loading ? [...Array(pages)] : filtredNews).map((item, index) => (
+                <Card
+                    key={index}
+                    {...item}
+                    displayOptions={displayOptions}
+                    loading={loading}
+                />
+            ))
+        )
+    }
+
+    const filtredNews = data.filter((item) =>
+        item.title.toLowerCase().includes(searchValue.toLowerCase())
+    )
+
+    const onAddNews = () => {
+        setPages(prevPages => prevPages + 3)
+    }
+
+    const changeSorting = () => {
+        setSort(!sort)
+        setData(data.reverse())
+    }
+
+
+    const onChangeSearchInput = (event) => {
+        setSearchValue(event.target.value);
+    }
+
 
     return (
         <>
-            <Header/>
+            <HomeHeader
+                changeSorting={changeSorting}
+                sort={sort}
+                onChangeSearchInput={onChangeSearchInput}
+                displayOptions={displayOptions}
+                setDisplayOptions={setDisplayOptions}/>
             <>
-                {loading ?
-                    <>
-                        <Loader/>
-                        <Loader/>
-                        <Loader/>
-                    </> :
-                    filtredNews.length === 0 ?
-                        <h2>Ничего не найдено. Попробуйте другой запрос.</h2> :
-                        renderNews()}
+                {renderNews()}
             </>
 
             <button

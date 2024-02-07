@@ -1,16 +1,13 @@
-import {AppContext} from "../app/App";
-import {useContext} from "react";
-import style from './Header.module.scss'
+import style from './HomeHeader.module.scss'
 
-export const Header = () => {
+export const HomeHeader = ({
+                           changeSorting,
+                           sort,
+                           onChangeSearchInput,
+                           displayOptions,
+                           setDisplayOptions
+                       }) => {
 
-    const {
-        displayOptions,
-        setDisplayOptions,
-        onChangeSearchInput,
-        sort,
-        changeSorting
-    } = useContext(AppContext)
 
     const handleCheckboxChange = (option) => {
         const newOptions = {
@@ -30,11 +27,11 @@ export const Header = () => {
     return (
         <div className={style.header}>
 
-            <btn
+            <button
                 className={style.btnSort}
                 onClick={changeSorting}>
                 {sort ? "Сначала новые" : "Сначала старые"}
-            </btn>
+            </button>
 
             <div className={style.settings}>
                 <label>

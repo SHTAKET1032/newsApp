@@ -1,4 +1,4 @@
-.header{
+.header {
   margin: 20px 0;
   z-index: 0;
   position: relative;
@@ -20,8 +20,9 @@
     &:hover {
       scale: 105%;
     }
-    }
-  .inputSearch{
+  }
+
+  .inputSearch {
     margin: 0 20px 0 0;
     padding: 5px 10px;
     min-width: 160px;
@@ -29,11 +30,13 @@
     border-radius: 10px;
     border: 3px solid black;
     font-size: 16px;
-    &::placeholder{
+
+    &::placeholder {
       color: crimson;
     }
   }
-  &:before{
+
+  &:before {
     z-index: -1;
     position: absolute;
     content: "";
