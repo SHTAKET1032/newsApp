@@ -9,7 +9,7 @@ export const Home = () => {
 
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
-    const [pages, setPages] = useState(3)
+    const [pages, setPages] = useState(4)
     const [sort, setSort] = useState(true)
     const [searchValue, setSearchValue] = useState('')
     const [displayOptions, setDisplayOptions] = useState({
@@ -18,13 +18,15 @@ export const Home = () => {
         showText: true
     })
 
+
     useEffect(() => {
         async function getData() {
             try {
                 setLoading(true)
 
-                const dataResponse = await axios.get(`https://newsapi.org/v2/top-headlines?pageSize=${pages}&country=ru&apiKey=db28ec789a3945f281d87070a1d28362`)
+                const dataResponse = await axios.get(`https://newsapi.org/v2/top-headlines?country=ru&apiKey=db28ec789a3945f281d87070a1d28362`)
                 setData(dataResponse.data.articles)
+                console.log("из эфекта", data)
 
                 setLoading(false)
 
@@ -47,6 +49,7 @@ export const Home = () => {
                     {...item}
                     displayOptions={displayOptions}
                     loading={loading}
+                    onAddNews={onAddNews}
                 />
             ))
         )
@@ -62,7 +65,7 @@ export const Home = () => {
 
     const changeSorting = () => {
         setSort(!sort)
-        setData(data.reverse())
+        setData([...data].reverse())
     }
 
 
@@ -83,11 +86,13 @@ export const Home = () => {
                 {renderNews()}
             </>
 
-            <button
-                className={style.btnMore}
-                onClick={() => onAddNews()}>
-                Ещё новости
-            </button>
+            {/*<button*/}
+            {/*    className={style.btnMore}*/}
+            {/*    onClick={() => onAddNews()}>*/}
+            {/*    Ещё новости*/}
+            {/*</button>*/}
+
+            <h4 className={style.itsAll}>Вы ознакомились со всеми новостями.</h4>
         </>
     )
 }
